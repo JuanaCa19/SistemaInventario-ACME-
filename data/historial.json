@@ -1,0 +1,10 @@
+[
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "1",
+        "descripcion": "ingresando",
+        "tipo": "Ingreso",
+        "stock": 25,
+        "fechaRegistro": "07/04/2026 18:39:30"
+    }
+]

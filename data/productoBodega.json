@@ -1,0 +1,32 @@
+[
+    {
+        "codigoProducto": 123,
+        "codigoBodega": "1",
+        "stockProducto": 14
+    },
+    {
+        "codigoProducto": 1245,
+        "codigoBodega": "2",
+        "stockProducto": 15
+    },
+    {
+        "codigoProducto": 1454,
+        "codigoBodega": "2",
+        "stockProducto": 21
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "2",
+        "stockProducto": 3
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "1",
+        "stockProducto": 60
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "3",
+        "stockProducto": 21
+    }
+]

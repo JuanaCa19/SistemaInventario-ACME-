@@ -1,0 +1,22 @@
+[
+    {
+        "Nombre": "gaseosa",
+        "Codigo": 123,
+        "Proveedor": "pepsi"
+    },
+    {
+        "Nombre": "gaseosa",
+        "Codigo": 1245,
+        "Proveedor": "cocacola"
+    },
+    {
+        "Nombre": "speed",
+        "Codigo": 1454,
+        "Proveedor": "pepsi"
+    },
+    {
+        "Nombre": "agua",
+        "Codigo": 456,
+        "Proveedor": "cristal"
+    }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "zona" : "centro",
+    "codigo" : 1
+  },
+  {
+    "zona" : "norte",
+    "codigo" : 2
+  },
+  {
+    "zona" : "oriente",
+    "codigo" : 3
+  }
+]
