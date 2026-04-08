@@ -41,33 +41,32 @@ def pedirDatos():
 
 def buscarExistencia(codigoIngresado):
 
-    with open("data/producto.json","r") as file:
-        listaProductos = json.load(file)
+    if os.path.getsize("data/producto.json") > 0:
+        with open("data/producto.json","r") as file:
+            listaProductos = json.load(file)
 
-    for producto in listaProductos:
-        if producto["Codigo"] == codigoIngresado:
-            return False
+        for producto in listaProductos:
+            if producto["Codigo"] == codigoIngresado:
+                return False
 
-    return True
+        return True
 
-def listar():
-    with open("data/producto.json","r") as file:
-        print(file.read())
 
 def buscar():
     codigoIngresado = int(input("Ingrese el codigo del Producto:"))
 
-    with open("data/producto.json","r") as file:
-        listaProductos = json.load(file)
+    if os.path.getsize("data/producto.json") > 0:
+        with open("data/producto.json","r") as file:
+            listaProductos = json.load(file)
 
-    for producto in listaProductos:
-        if producto["Codigo"] == codigoIngresado:
-            print("Producto Encontrado!!!")
-            print("Codigo: ", producto["Codigo"])
-            print("Nombre: ", producto["Nombre"])
-            print("Proveedor: ", producto["Proveedor"])
+        for producto in listaProductos:
+            if producto["Codigo"] == codigoIngresado:
+                print("Producto Encontrado!!!")
+                print("Codigo: ", producto["Codigo"])
+                print("Nombre: ", producto["Nombre"])
+                print("Proveedor: ", producto["Proveedor"])
 
-            buscarProductoBodega(codigoIngresado)
+                buscarProductoBodega(codigoIngresado)
 
 def ingresarProducto():
 

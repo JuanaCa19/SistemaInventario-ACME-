@@ -36,5 +36,4 @@ def ejecutarOpciones(op):
         print("Opción Invalida!!!")
 
 
-entrar = True
 iniciar()
