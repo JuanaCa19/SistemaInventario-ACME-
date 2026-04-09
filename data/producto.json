@@ -18,5 +18,10 @@
         "Nombre": "agua",
         "Codigo": 456,
         "Proveedor": "cristal"
+    },
+    {
+        "Nombre": "f",
+        "Codigo": 1,
+        "Proveedor": "f"
     }
 ]

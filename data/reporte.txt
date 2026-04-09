@@ -1,0 +1,19 @@
+
+Cantidad de Productos en las Bodegas: 134
+Cantidad de Productos en la Bodega Norte: 39
+
+Cantidad de Productos en las Bodegas: 134
+Cantidad de Productos en la Bodega Norte: 39
+Fecha: 2026-04-08 18:06:05.815272
+Cantidad de Productos en las Bodegas: 134
+Cantidad de Productos en la Bodega Central: 74
+
+
+Fecha: 2026-04-08 20:19:39.591383
+Cantidad de Productos en las Bodegas: 174
+Cantidad de Productos en la Bodega Central: 74
+
+
+Fecha: 2026-04-08 20:21:18.941533
+Cantidad de Productos en las Bodegas: 172
+Cantidad de Productos en la Bodega Oriente: 48

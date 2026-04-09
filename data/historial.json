@@ -6,5 +6,85 @@
         "tipo": "Ingreso",
         "stock": 25,
         "fechaRegistro": "07/04/2026 18:39:30"
+    },
+    {
+        "codigoProducto": 1,
+        "codigoBodega": "2",
+        "descripcion": "h",
+        "tipo": "Ingreso",
+        "stock": 13,
+        "fechaRegistro": "08/04/2026 19:28:51"
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "3",
+        "descripcion": "fgc",
+        "tipo": "Ingreso",
+        "stock": 2,
+        "fechaRegistro": "08/04/2026 20:02:57"
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "3",
+        "descripcion": "hhh",
+        "tipo": "Ingreso",
+        "stock": 2,
+        "fechaRegistro": "08/04/2026 20:03:02"
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "3",
+        "descripcion": "jjjj",
+        "tipo": "Ingreso",
+        "stock": 2,
+        "fechaRegistro": "08/04/2026 20:03:05"
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "3",
+        "descripcion": "jjj",
+        "tipo": "Ingreso",
+        "stock": 2,
+        "fechaRegistro": "08/04/2026 20:03:07"
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "3",
+        "descripcion": "k",
+        "tipo": "Ingreso",
+        "stock": 2,
+        "fechaRegistro": "08/04/2026 20:03:08"
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "3",
+        "descripcion": "gff",
+        "tipo": "Ingreso",
+        "stock": 3,
+        "fechaRegistro": "08/04/2026 20:04:32"
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "3",
+        "descripcion": "k",
+        "tipo": "Ingreso",
+        "stock": 12,
+        "fechaRegistro": "08/04/2026 20:05:27"
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "3",
+        "descripcion": "k",
+        "tipo": "Ingreso",
+        "stock": 12,
+        "fechaRegistro": "08/04/2026 20:06:07"
+    },
+    {
+        "codigoProducto": 456,
+        "codigoBodega": "2",
+        "descripcion": "dfsfs",
+        "tipo": "Retiro",
+        "stock": 2,
+        "fechaRegistro": "08/04/2026 20:20:32"
     }
 ]

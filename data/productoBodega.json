@@ -17,7 +17,7 @@
     {
         "codigoProducto": 456,
         "codigoBodega": "2",
-        "stockProducto": 3
+        "stockProducto": 1
     },
     {
         "codigoProducto": 456,
@@ -27,6 +27,11 @@
     {
         "codigoProducto": 456,
         "codigoBodega": "3",
-        "stockProducto": 21
+        "stockProducto": 48
+    },
+    {
+        "codigoProducto": 1,
+        "codigoBodega": "2",
+        "stockProducto": 13
     }
 ]
