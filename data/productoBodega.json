@@ -33,5 +33,10 @@
         "codigoProducto": 1,
         "codigoBodega": "2",
         "stockProducto": 13
+    },
+    {
+        "codigoProducto": 3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333,
+        "codigoBodega": "2",
+        "stockProducto": 2
     }
 ]

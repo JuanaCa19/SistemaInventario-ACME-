@@ -2,8 +2,8 @@ from producto import *
 from productoBodega import *
 
 def iniciar():
-    op = 0
-    while op != 6:
+    op = "0"
+    while op != "6":
         op = mostrarMenu()
         ejecutarOpciones(op)
 
