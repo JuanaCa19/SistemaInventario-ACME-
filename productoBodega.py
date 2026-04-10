@@ -3,21 +3,18 @@ import historial
 import json
 import os
 
+import utilidades
 
 
 def registrarProductoBodega(codigoProducto, codigoBodega,stock):
 
     productoBodega = pedirDatos(codigoProducto, codigoBodega,stock)
-    listaProductoBodega = []
 
-    if os.path.getsize("data/productoBodega.json") > 0:
-        with open("data/productoBodega.json", "r") as file:
-            listaProductoBodega = json.load(file)
+    listaProductoBodega = utilidades.leerJson("data/productoBodega.json")
 
     listaProductoBodega.append(productoBodega)
 
-    with open("data/productoBodega.json", "w") as file:
-        json.dump(listaProductoBodega, file, indent=4)
+    utilidades.escribirJson("data/productoBodega.json",listaProductoBodega)
 
     print("Stock Agregado con Exito!!!")
 
@@ -34,153 +31,130 @@ def pedirDatos(codigoProducto, codigoBodega,stock):
 
 def buscarProductoBodega(codigoIngresado):
 
-    if os.path.getsize("data/producto.json") > 0:
-        with open("data/productoBodega.json", "r") as file:
-            listaProductoBodega = json.load(file)
+    listaProductoBodega = utilidades.leerJson("data/productoBodega.json")
 
-        for productoBodega in listaProductoBodega:
+    for productoBodega in listaProductoBodega:
 
-            if productoBodega["codigoProducto"] == codigoIngresado:
+        if productoBodega["codigoProducto"] == codigoIngresado:
 
-                if productoBodega["codigoBodega"] == "1":
-                    print("Bodega : Centro")
-                elif productoBodega["codigoBodega"] == "2":
-                    print("Bodega : Norte")
-                elif productoBodega["codigoBodega"] == "3":
-                    print("Bodega : Oriente")
+            if productoBodega["codigoBodega"] == "1":
+                print("Bodega : Centro")
+            elif productoBodega["codigoBodega"] == "2":
+                print("Bodega : Norte")
+            elif productoBodega["codigoBodega"] == "3":
+                print("Bodega : Oriente")
 
-                print("Stock : ",productoBodega["stockProducto"])
+            print("Stock : ",productoBodega["stockProducto"])
 
 def ingresarProductoBodega(bodega,codigoProducto):
 
     stockGuardado = buscarStock(bodega,codigoProducto)
 
+    stock = utilidades.validarEntero("Ingrese el Stock: ")
+
     if stockGuardado is None:
-        productoBodega = pedirDatos(codigoProducto,bodega)
+        productoBodega = pedirDatos(codigoProducto,bodega,stock)
+
         crearProductoBodega(productoBodega)
+
+        historial.crearRegistro(bodega, codigoProducto, "Ingreso", stock)
+
         print("Producto Registrado en Nueva Bodega Exitosamente!!")
+
         return
-    while True:
 
-        op = input("¿Que desea hacer? (1. Ingresar Producto / 2. Retirar Producto)")
 
-        if op not in ("1","2"):
-            print("Selecciona una opcion Correcta!!!")
-            continue
+    op = utilidades.validarModificacion("¿Que desea hacer? (1. Ingresar Producto / 2. Retirar Producto)")
 
-        if op =="1":
 
-            try:
-                stock = int(input("Ingrese el stock a sumar: "))
-            except:
-                print("Ingrese un dato numerico!!!")
-                continue
+    match op:
+        case "1":
 
             stockGuardado +=stock
 
             historial.crearRegistro(bodega,codigoProducto,"Ingreso",stock)
 
-        elif op=="2":
-
-            try:
-                stock = int(input("Ingrese el stock a restar: "))
-            except:
-                print("Ingrese un dato numerico!!!")
-                continue
+        case "2":
 
             if stock <= stockGuardado:
                 stockGuardado -= stock
                 historial.crearRegistro(bodega, codigoProducto, "Retiro",stock)
             else:
                 print("No hay Suficiente Stock!!!")
-                continue
+                return
 
 
-        modificarStock(bodega, codigoProducto,stockGuardado)
-        return
+    modificarStock(bodega, codigoProducto,stockGuardado)
 
 def buscarStock(bodega,codigoProducto):
 
-    if os.path.getsize("data/producto.json") > 0:
-        with open("data/productoBodega.json","r") as file:
-            listaProductoBodega = json.load(file)
+    listaProductoBodega = utilidades.leerJson("data/productoBodega.json")
 
-        for productoBodega in listaProductoBodega:
-            if productoBodega["codigoProducto"] == codigoProducto and productoBodega["codigoBodega"] == bodega:
-                stock = productoBodega["stockProducto"]
-                return stock
+    for productoBodega in listaProductoBodega:
+        if productoBodega["codigoProducto"] == codigoProducto and productoBodega["codigoBodega"] == bodega:
+            stock = productoBodega["stockProducto"]
+            return stock
 
 
 def modificarStock(bodega, codigoProducto,stockModificado):
 
-    if os.path.getsize("data/producto.json") > 0:
-        with open("data/productoBodega.json", "r") as file:
-            listaProductoBodega = json.load(file)
+    listaProductoBodega = utilidades.leerJson("data/productoBodega.json")
 
-        for productoBodega in listaProductoBodega:
-            if productoBodega["codigoProducto"] == codigoProducto and productoBodega["codigoBodega"] == bodega:
-                productoBodega["stockProducto"] = stockModificado
+    for productoBodega in listaProductoBodega:
+        if productoBodega["codigoProducto"] == codigoProducto and productoBodega["codigoBodega"] == bodega:
+            productoBodega["stockProducto"] = stockModificado
 
+    utilidades.escribirJson("data/productoBodega.json",listaProductoBodega)
 
-        with open("data/productoBodega.json", "w") as file:
-            json.dump(listaProductoBodega,file,indent=4)
 
 def crearProductoBodega(productoBodega):
 
-    if os.path.getsize("data/productoBodega.json") > 0:
-        with open("data/productoBodega.json", "r") as file:
-            listaProductoBodega = json.load(file)
+    listaProductoBodega = utilidades.leerJson("data/productoBodega.json")
 
     listaProductoBodega.append(productoBodega)
 
-    with open("data/productoBodega.json", "w") as file:
-        json.dump(listaProductoBodega, file, indent=4)
+    utilidades.escribirJson("data/productoBodega.json",listaProductoBodega)
+
 
 def generarReporte():
-    while True:
-        codigoBodega = input("Seleccione la Bodega(1. Centro / 2. Norte / 3. Oriente)")
 
-        if codigoBodega not in ("1", "2", "3"):
-            print("Seleccione una Bodega valida!!!")
-            continue
+        codigoBodega = utilidades.validarBodega("Seleccione la Bodega(1. Centro / 2. Norte / 3. Oriente)")
 
-        if os.path.getsize("data/productoBodega.json") > 0:
-            with open("data/productoBodega.json", "r") as file:
-                listaProductoBodega = json.load(file)
+        listaProductoBodega = utilidades.leerJson("data/productoBodega.json")
 
-            totalProductos = 0
-            totalProductosBodega = 0
+        totalProductos = 0
+        totalProductosBodega = 0
 
-            for productoBodega in listaProductoBodega:
+        for productoBodega in listaProductoBodega:
 
-                if productoBodega["codigoBodega"] == codigoBodega:
-                    totalProductosBodega += productoBodega["stockProducto"]
-                totalProductos += productoBodega["stockProducto"]
+            if productoBodega["codigoBodega"] == codigoBodega:
+                totalProductosBodega += productoBodega["stockProducto"]
+            totalProductos += productoBodega["stockProducto"]
 
         print("Cantidad de Productos en las Bodegas: ", totalProductos)
-        if codigoBodega == "1":
-            mensaje="Cantidad de Productos en la Bodega Central: "+ str(totalProductosBodega)
-            print(mensaje)
-        elif codigoBodega == "2":
-            mensaje = "Cantidad de Productos en la Bodega Norte: " + str(totalProductosBodega)
-            print(mensaje)
-        elif codigoBodega == "3":
-            mensaje = "Cantidad de Productos en la Bodega Oriente: " + str(totalProductosBodega)
-            print(mensaje)
-        else:
-            print("Ingrese un codigo de bodega Correcto!!!")
-            return
 
-        while True:
-            print("Desea Generar Un reporte.txt? (1. SI / 2. NO)")
-            op = input()
-            if op == "1":
-                with open("data/reporte.txt","a") as file:
-                    file.write("\n\nFecha: "+ str(datetime.now())+"\n"+"Cantidad de Productos en las Bodegas: "+ str(totalProductos)+"\n"+str(mensaje)+"\n")
-                print("Reporte Generado con Exito!!!!")
-                return
-            elif op == "2":
-                print("Finalizando Reporte!!!")
-                return
-            else:
-                print("Ingrese una Opcion Valida")
+        match codigoBodega:
+            case "1":
+                mensaje = "Cantidad de Productos en la Bodega Central: " + str(totalProductosBodega)
+                print(mensaje)
+            case "2":
+                mensaje = "Cantidad de Productos en la Bodega Norte: " + str(totalProductosBodega)
+                print(mensaje)
+            case "3":
+                mensaje = "Cantidad de Productos en la Bodega Oriente: " + str(totalProductosBodega)
+                print(mensaje)
+
+
+
+        op = utilidades.validarModificacion("Desea Generar Un reporte.txt? (1. SI / 2. NO): ")
+
+        if op == "1":
+
+            with open("data/reporte.txt","a") as file:
+                file.write("\n\nFecha: "+ str(datetime.now())+"\n"+"Cantidad de Productos en las Bodegas: "+ str(totalProductos)+"\n"+str(mensaje)+"\n")
+
+            print("Reporte Generado con Exito!!!!")
+
+        elif op == "2":
+
+            print("Finalizando Reporte!!!")

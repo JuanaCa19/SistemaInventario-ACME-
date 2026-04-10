@@ -38,5 +38,25 @@
         "codigoProducto": 3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333,
         "codigoBodega": "2",
         "stockProducto": 2
+    },
+    {
+        "codigoProducto": 542,
+        "codigoBodega": "1",
+        "stockProducto": 12
+    },
+    {
+        "codigoProducto": 542,
+        "codigoBodega": "2",
+        "stockProducto": 11
+    },
+    {
+        "codigoProducto": 542,
+        "codigoBodega": "3",
+        "stockProducto": 2
+    },
+    {
+        "codigoProducto": 578,
+        "codigoBodega": "1",
+        "stockProducto": 3
     }
 ]

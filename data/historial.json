@@ -94,5 +94,45 @@
         "tipo": "Ingreso",
         "stock": 2,
         "fechaRegistro": "09/04/2026 09:25:25"
+    },
+    {
+        "codigoProducto": 542,
+        "codigoBodega": "1",
+        "descripcion": "assadasda",
+        "tipo": "Ingreso",
+        "stock": 0,
+        "fechaRegistro": "10/04/2026 15:02:58"
+    },
+    {
+        "codigoProducto": 542,
+        "codigoBodega": "1",
+        "descripcion": "dfgdfdfd",
+        "tipo": "Ingreso",
+        "stock": 12,
+        "fechaRegistro": "10/04/2026 15:16:03"
+    },
+    {
+        "codigoProducto": 542,
+        "codigoBodega": "2",
+        "descripcion": "sdsdfsf",
+        "tipo": "Retiro",
+        "stock": 12,
+        "fechaRegistro": "10/04/2026 17:47:03"
+    },
+    {
+        "codigoProducto": 542,
+        "codigoBodega": "3",
+        "descripcion": "gdgdfd",
+        "tipo": "Ingreso",
+        "stock": 2,
+        "fechaRegistro": "10/04/2026 17:48:49"
+    },
+    {
+        "codigoProducto": 578,
+        "codigoBodega": "1",
+        "descripcion": "sdfsf",
+        "tipo": "Ingreso",
+        "stock": 3,
+        "fechaRegistro": "10/04/2026 17:52:14"
     }
 ]

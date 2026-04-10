@@ -8,7 +8,7 @@ def iniciar():
         ejecutarOpciones(op)
 
 def mostrarMenu():
-    print("""SISTEMA DE INVENTARIO
+    op = input("""SISTEMA DE INVENTARIO
              1. Registrar Producto
              2. Modificar stock de Producto
              3. Buscar Producto
@@ -16,24 +16,24 @@ def mostrarMenu():
              5. Mostrar Reporte
              6. Salir
              Ingrese una opcion:""")
-    op = input()
     return op
 
 def ejecutarOpciones(op):
-    if op == "1":
-        registrar()
-    elif op == "2":
-        ingresarProducto()
-    elif op == "3":
-         buscar()
-    elif op == "4":
-          listarByProdBode()
-    elif op == "5":
-          generarReporte()
-    elif op == "6":
-        print("Cerrando Sistema de Inventario!!!")
-    else:
-        print("Opción Invalida!!!")
+    match op:
+        case "1":
+            registrar()
+        case "2":
+            ingresarProducto()
+        case "3":
+             buscar()
+        case "4":
+            listarByProdBode()
+        case "5":
+            generarReporte()
+        case "6":
+            print("Cerrando Sistema de Inventario!!!")
+        case _:
+            print("Opción Invalida!!!")
 
 
 iniciar()

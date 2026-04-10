@@ -1,101 +1,86 @@
 from historial import *
 import json
 import os
+import utilidades
 
 
 def registrar():
-    listaProductos = []
+
     producto = pedirDatos()
 
     if producto is None:
+        registrar()
         return
 
-    if os.path.getsize("data/producto.json") > 0:
-        with open("data/producto.json","r") as file:
-            listaProductos = json.load(file)
+    listaProductos = utilidades.leerJson("data/producto.json")
 
     listaProductos.append(producto)
 
-    with open("data/producto.json","w") as file:
-        json.dump(listaProductos,file,indent=4)
+    utilidades.escribirJson("data/producto.json",listaProductos)
 
     print("Producto Agregado con Exito!!!")
 
 def pedirDatos():
-    while True:
-        try:
-            codigoProducto = int(input("Digite elcodigo del Producto: "))
-        except:
-            print("Ingrese un dato numerico!!!")
-            continue
 
-        if buscarExistencia(codigoProducto):
-            nombre = input("Digite el nombre del Producto: ")
-            proveedor = input("Digite el proveedor del Producto: ")
+    codigoProducto = utilidades.validarEntero("Digite elcodigo del Producto: ")
 
-            if(not(nombre.strip() and proveedor.strip())):
-                print("No puede dejar datos Vacios")
-                continue
+    if not buscarExistencia(codigoProducto):
+        print("Producto Ya Registrado con este Codigo: ",codigoProducto)
+        return
 
-            registrarHistorial(codigoProducto)
+    nombre = utilidades.validarStr("Digite el nombre del Producto: ")
 
-            producto = dict(
-                Nombre=nombre,
-                Codigo=codigoProducto,
-                Proveedor=proveedor
-            )
-            return producto
+    proveedor = utilidades.validarStr("Digite el proveedor del Producto: ")
+
+
+    registrarHistorial(codigoProducto)
+
+    producto = dict(
+        Nombre=nombre,
+        Codigo=codigoProducto,
+        Proveedor=proveedor
+    )
+    return producto
+
+
 
 def buscarExistencia(codigoIngresado):
 
-    if os.path.getsize("data/producto.json") > 0:
-        with open("data/producto.json","r") as file:
-            listaProductos = json.load(file)
+    listaProductos = utilidades.leerJson("data/producto.json")
 
-        for producto in listaProductos:
-            if producto["Codigo"] == codigoIngresado:
-                return False
+    for producto in listaProductos:
+        if producto["Codigo"] == codigoIngresado:
+            return False
 
-        return True
+    return True
 
 
 def buscar():
 
-    while True:
-        try:
-            codigoIngresado = int(input("Ingrese el codigo del Producto:"))
-        except:
-            print("Digite un dato numerico!!!")
-            continue
+    codigoIngresado = utilidades.validarEntero("Ingrese el codigo del Producto:")
 
-        if os.path.getsize("data/producto.json") > 0:
-            with open("data/producto.json","r") as file:
-                listaProductos = json.load(file)
+    listaProductos = utilidades.leerJson("data/producto.json")
 
-            for producto in listaProductos:
-                if producto["Codigo"] == codigoIngresado:
-                    print("Producto Encontrado!!!")
-                    print("Codigo: ", producto["Codigo"])
-                    print("Nombre: ", producto["Nombre"])
-                    print("Proveedor: ", producto["Proveedor"])
+    for producto in listaProductos:
+        if producto["Codigo"] == codigoIngresado:
+            print("Producto Encontrado!!!")
+            print("Codigo: ", producto["Codigo"])
+            print("Nombre: ", producto["Nombre"])
+            print("Proveedor: ", producto["Proveedor"])
 
-                    buscarProductoBodega(codigoIngresado)
-                    return
-            print("Producto No encontrado")
+            buscarProductoBodega(codigoIngresado)
             return
+    print("Producto No encontrado")
 
 def ingresarProducto():
-    while True:
-        try:
-            codigoIngresado = int(input("Digite el codigo del producto: "))
-        except:
-            print("Ingrese un dato numerico!!!")
-            continue
 
-        if not buscarExistencia(codigoIngresado):
-            bodega = input("Ingrese la Bodega(1. Centro / 2. Norte / 3. Oriente)")
-            if bodega not in ("1","2","3"):
-                print("Seleccione una Bodega valida!!!")
-                continue
-            ingresarProductoBodega(bodega,codigoIngresado)
-            return
+    codigoIngresado = utilidades.validarEntero("Digite el codigo del producto: ")
+
+    if buscarExistencia(codigoIngresado):
+        print("El Producto no se encuentra registrado!!!")
+        ingresarProducto()
+        return
+
+    bodega = utilidades.validarBodega("Ingrese la Bodega(1. Centro / 2. Norte / 3. Oriente)")
+
+    ingresarProductoBodega(bodega,codigoIngresado)
