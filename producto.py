@@ -9,7 +9,6 @@ def registrar():
     producto = pedirDatos()
 
     if producto is None:
-        registrar()
         return
 
     listaProductos = utilidades.leerJson("data/producto.json")
@@ -78,7 +77,6 @@ def ingresarProducto():
 
     if buscarExistencia(codigoIngresado):
         print("El Producto no se encuentra registrado!!!")
-        ingresarProducto()
         return
 
     bodega = utilidades.validarBodega("Ingrese la Bodega(1. Centro / 2. Norte / 3. Oriente)")

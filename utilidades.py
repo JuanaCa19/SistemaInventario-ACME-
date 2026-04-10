@@ -58,8 +58,5 @@ def leerJson(ruta):
 
 def escribirJson(ruta,lista):
 
-    if os.path.getsize(ruta) > 0:
-        with open(ruta, "w") as file:
-            json.dump(lista, file, indent=4)
-    else:
-        print("JSON Vacio")
+    with open(ruta, "w") as file:
+        json.dump(lista, file, indent=4)
