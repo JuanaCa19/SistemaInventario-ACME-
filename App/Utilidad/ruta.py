@@ -1,0 +1,1 @@
+ruta = "/home/camper/PycharmProjects/SistemaInventario-ACME-/"

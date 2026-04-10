@@ -1,6 +1,6 @@
 import json
 import os
-
+from App.Utilidad import ruta
 
 def validarEntero(mensaje):
     while True:
@@ -47,16 +47,16 @@ def validarModificacion(mensaje):
             continue
         return op
 
-def leerJson(ruta):
-    if os.path.getsize(ruta) > 0:
-        with open(ruta, "r") as file:
+def leerJson(rutaArchivo):
+    if os.path.getsize(ruta.ruta+rutaArchivo) > 0:
+        with open(ruta.ruta+rutaArchivo, "r") as file:
             lista = json.load(file)
             return lista
     else:
         print("JSON Vacio")
         return []
 
-def escribirJson(ruta,lista):
+def escribirJson(rutaArchivo,lista):
 
-    with open(ruta, "w") as file:
+    with open(ruta.ruta+rutaArchivo, "w") as file:
         json.dump(lista, file, indent=4)

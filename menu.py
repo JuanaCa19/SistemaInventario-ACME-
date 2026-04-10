@@ -1,6 +1,7 @@
 from App.Modelo.producto import *
 from App.Modelo.productoBodega import *
 
+
 def iniciar():
     op = "0"
     while op != "6":
@@ -34,6 +35,5 @@ def ejecutarOpciones(op):
             print("Cerrando Sistema de Inventario!!!")
         case _:
             print("Opción Invalida!!!")
-
 
 iniciar()
