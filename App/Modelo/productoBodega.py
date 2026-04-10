@@ -1,9 +1,5 @@
 from datetime import *
-import historial
-import json
-import os
-
-import utilidades
+from App.Utilidad import utilidades
 
 
 def registrarProductoBodega(codigoProducto, codigoBodega,stock):
@@ -14,7 +10,7 @@ def registrarProductoBodega(codigoProducto, codigoBodega,stock):
 
     listaProductoBodega.append(productoBodega)
 
-    utilidades.escribirJson("data/productoBodega.json",listaProductoBodega)
+    utilidades.escribirJson("data/productoBodega.json", listaProductoBodega)
 
     print("Stock Agregado con Exito!!!")
 
@@ -72,13 +68,13 @@ def ingresarProductoBodega(bodega,codigoProducto):
 
             stockGuardado +=stock
 
-            historial.crearRegistro(bodega,codigoProducto,"Ingreso",stock)
+            historial.crearRegistro(bodega, codigoProducto, "Ingreso", stock)
 
         case "2":
 
             if stock <= stockGuardado:
                 stockGuardado -= stock
-                historial.crearRegistro(bodega, codigoProducto, "Retiro",stock)
+                historial.crearRegistro(bodega, codigoProducto, "Retiro", stock)
             else:
                 print("No hay Suficiente Stock!!!")
                 return
@@ -104,7 +100,7 @@ def modificarStock(bodega, codigoProducto,stockModificado):
         if productoBodega["codigoProducto"] == codigoProducto and productoBodega["codigoBodega"] == bodega:
             productoBodega["stockProducto"] = stockModificado
 
-    utilidades.escribirJson("data/productoBodega.json",listaProductoBodega)
+    utilidades.escribirJson("data/productoBodega.json", listaProductoBodega)
 
 
 def crearProductoBodega(productoBodega):
@@ -113,7 +109,7 @@ def crearProductoBodega(productoBodega):
 
     listaProductoBodega.append(productoBodega)
 
-    utilidades.escribirJson("data/productoBodega.json",listaProductoBodega)
+    utilidades.escribirJson("data/productoBodega.json", listaProductoBodega)
 
 
 def generarReporte():
@@ -150,8 +146,10 @@ def generarReporte():
 
         if op == "1":
 
-            with open("data/reporte.txt","a") as file:
-                file.write("\n\nFecha: "+ str(datetime.now())+"\n"+"Cantidad de Productos en las Bodegas: "+ str(totalProductos)+"\n"+str(mensaje)+"\n")
+            mensaje = "\n\nFecha: " + str(datetime.now()) + "\n" + "Cantidad de Productos en las Bodegas: "+  str(totalProductos) + "\n" + str(mensaje) + "\n"
+
+            with open("data/Reporte/reporte.txt", "a") as file:
+                file.write(mensaje)
 
             print("Reporte Generado con Exito!!!!")
 

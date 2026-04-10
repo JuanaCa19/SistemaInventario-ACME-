@@ -134,5 +134,13 @@
         "tipo": "Ingreso",
         "stock": 3,
         "fechaRegistro": "10/04/2026 17:52:14"
+    },
+    {
+        "codigoProducto": 156,
+        "codigoBodega": "1",
+        "descripcion": "sdfsf",
+        "tipo": "Ingreso",
+        "stock": 12,
+        "fechaRegistro": "10/04/2026 18:35:45"
     }
 ]

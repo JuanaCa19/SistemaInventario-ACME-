@@ -58,5 +58,10 @@
         "codigoProducto": 578,
         "codigoBodega": "1",
         "stockProducto": 3
+    },
+    {
+        "codigoProducto": 156,
+        "codigoBodega": "1",
+        "stockProducto": 12
     }
 ]

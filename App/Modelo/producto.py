@@ -1,7 +1,5 @@
-from historial import *
-import json
-import os
-import utilidades
+from App.Modelo.historial import *
+from App.Utilidad import utilidades
 
 
 def registrar():
@@ -15,7 +13,7 @@ def registrar():
 
     listaProductos.append(producto)
 
-    utilidades.escribirJson("data/producto.json",listaProductos)
+    utilidades.escribirJson("data/producto.json", listaProductos)
 
     print("Producto Agregado con Exito!!!")
 

@@ -1,9 +1,6 @@
-import producto
-from datetime import *
-from productoBodega import *
-import json
-import os
-import utilidades
+from App.Modelo.productoBodega import *
+from App.Utilidad import utilidades
+
 
 def registrarHistorial(codigoProducto):
 
@@ -14,7 +11,7 @@ def registrarHistorial(codigoProducto):
 
     listaHistorial.append(historial)
 
-    utilidades.escribirJson("data/historial.json",listaHistorial)
+    utilidades.escribirJson("data/historial.json", listaHistorial)
 
     print("Historial Agregado con Exito!!!")
 
@@ -64,7 +61,7 @@ def crearJson(historial):
 
     listaHistorial.append(historial)
 
-    utilidades.escribirJson("data/historial.json",listaHistorial)
+    utilidades.escribirJson("data/historial.json", listaHistorial)
 
 
 def listarByProdBode():

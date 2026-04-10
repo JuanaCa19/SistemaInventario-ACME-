@@ -1,5 +1,5 @@
-from producto import *
-from productoBodega import *
+from App.Modelo.producto import *
+from App.Modelo.productoBodega import *
 
 def iniciar():
     op = "0"
